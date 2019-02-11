@@ -11,9 +11,42 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 1) do
+ActiveRecord::Schema.define(version: 6) do
 
   create_table "cities", force: :cascade do |t|
+    t.string "name"
+  end
+
+  create_table "listings", force: :cascade do |t|
+    t.integer "neighborhood_id"
+    t.integer "host_id"
+    t.string  "title"
+    t.string  "description"
+    t.string  "address"
+    t.string  "listing_type"
+    t.integer "price"
+  end
+
+  create_table "neighborhoods", force: :cascade do |t|
+    t.string  "name"
+    t.integer "city_id"
+  end
+
+  create_table "reservations", force: :cascade do |t|
+    t.integer  "listing_id"
+    t.integer  "guest_id"
+    t.datetime "checkin"
+    t.datetime "checkout"
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.integer "reservation_id"
+    t.integer "guest_id"
+    t.string  "description"
+    t.integer "rating"
+  end
+
+  create_table "users", force: :cascade do |t|
     t.string "name"
   end
 
