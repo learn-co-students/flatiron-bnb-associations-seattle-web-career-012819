@@ -1,5 +1,5 @@
 require 'rails_helper'
-
+# require 'pry'
 describe City do
   let(:nyc) { City.create(name: 'NYC') }
 
@@ -11,10 +11,10 @@ describe City do
     financial_district = Neighborhood.create(name: 'Fi Di', city: nyc)
     green_point = Neighborhood.create(name: 'Green Point', city: nyc)
     brighton_beach = Neighborhood.create(name: 'Brighton Beach', city: nyc)
-
+    
     expect(nyc.neighborhoods).to eq([financial_district, green_point, brighton_beach])
   end
-
+  
   context 'listings' do
     let(:user) { User.create(name: "user") }
     let(:fidi) { Neighborhood.create(name: 'Fi Di', city: nyc) }
@@ -27,11 +27,12 @@ describe City do
         price: 50.00,
         neighborhood: fidi,
         host: user
-      )
-    end
-
-    it 'has many listings through neighborhoods' do
-      expect(nyc.listings).to include(listing)
-    end
+        )
+      end
+      
+      it 'has many listings through neighborhoods' do
+        # binding.pry
+        expect(nyc.listings).to include(listing)
+      end
   end
 end
