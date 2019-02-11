@@ -1,4 +1,5 @@
 require 'rails_helper'
+require 'pry'
 
 describe User do
   let(:katie) { User.create(name: "Katie") }
@@ -37,6 +38,7 @@ describe User do
       end
 
       it 'has many reservations through their listing' do
+        # binding.pry
         expect(katie.reservations).to include(reservation)
       end
     end
@@ -52,11 +54,13 @@ describe User do
       end
 
       it 'has many trips' do
+        # binding.pry
         expect(logan.trips).to include(reservation)
       end
 
 
       it 'has written many reviews' do
+        # binding.pry
         expect(logan.reviews).to include(review)
       end
     end

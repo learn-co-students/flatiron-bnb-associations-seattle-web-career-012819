@@ -1,5 +1,5 @@
 require 'rails_helper'
-
+require 'pry'
 describe Listing do
   let(:new_york_city) { City.create(name: 'NYC') }
   let(:financial_district) { Neighborhood.create(name: 'Fi Di', city: new_york_city) }
@@ -67,12 +67,13 @@ describe Listing do
     it 'has many reservations' do
       expect(listing.reservations).to include(reservation)
     end
-
+    
     it 'has many reviews through reservations' do
       expect(listing.reviews).to include(review)
     end
-
+    
     it 'knows about all of its guests' do
+      # binding.pry
       expect(listing.guests).to include(logan)
     end
   end
