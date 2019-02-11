@@ -1,4 +1,4 @@
-class Neighborhood < ActiveRecord::Base[5.1]
+class Neighborhood < ActiveRecord::Base
     belongs_to :city
     has_many :listings
 end

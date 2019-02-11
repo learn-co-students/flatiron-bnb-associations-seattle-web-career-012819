@@ -1,6 +1,6 @@
-class User < ActiveRecord::Base[5.1]
-    has_many :listings, foreign_key: 'host_id'
-    has_many :trips, class_name: 'Reservation', foreign_key: 'guest_id'
+class User < ActiveRecord::Base
+    has_many :listings, :foreign_key => "host_id"
+    has_many :reviews, :foreign_key => "guest_id"
     has_many :reservations, through: :listings
-    has_many :reviews, foreign_key: 'guest_id'
+    has_many :trips, class_name: 'Reservation', foreign_key: 'guest_id'
 end
